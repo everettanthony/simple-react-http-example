@@ -1,0 +1,51 @@
+.FullPost {
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    box-sizing: border-box;
+    margin: 10px auto;
+    max-width: 1230px;
+    padding: 25px 30px;
+    width: 95%;
+
+    .Title {
+        margin: 0;
+        text-transform: capitalize;
+    }
+    
+    .Body {
+        font-size: .9rem;
+        margin: 6px 0 0;
+    }
+    
+    .Message {
+        text-align: center;
+    }
+}
+
+.Edit {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Button {
+    border: none;
+    background-color: transparent;
+    color: #fa923f;
+    cursor: pointer;
+    margin: 10px 0 0;
+    padding: 6px 8px;
+    outline: none;
+
+    &:hover, &:active {
+        background-color: #f0f0f0;
+        color: #cc2cc9;
+    }
+   
+    &.Delete {
+        color: #f7218c;
+
+        &:hover, &:active {
+            color: #cc2cc9;
+        }
+    }
+}

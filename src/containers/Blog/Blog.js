@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
+import styles from './Blog.module.scss';
 // import axios from 'axios';
 import axios from '../../axios';
 
 import Post from '../../components/Post/Post';
 import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
-import './Blog.css';
 
 class Blog extends Component {
     state = {
         posts: [],
         selectedPostId: null,
-        error: false
+        error: false,
+        postFormOpen: false
     };
 
     componentDidMount() {
@@ -36,6 +37,18 @@ class Blog extends Component {
         this.setState({ selectedPostId: id });
     }
 
+    postFormClose = () => {
+        this.setState({ postFormOpen: false });
+    }
+
+    postFormToggle = (evt) => {
+        evt.preventDefault();
+
+        this.setState( ( prevState ) => {
+            return { postFormOpen: !prevState.postFormOpen };
+        } );
+    }
+
     render() {
         let posts = <p style={{textAlign: 'center'}}>Something went wrong!</p>;
 
@@ -51,15 +64,30 @@ class Blog extends Component {
         }
 
         return (
-            <div>
-                <section className="Posts">
-                    {posts}
-                </section>
+            <div className={styles.Blog}>
+                <header className={styles.Header}>
+                    <nav className={styles.Nav}>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/" onClick={this.postFormToggle}>New Blog</a></li>
+                        </ul>
+                    </nav>
+                </header>
+                <div className={styles.Main}>
+                    <div className={styles.Column}>
+                        <section className={styles.Posts}>
+                            {posts}
+                        </section>
+                    </div>
+                    <div className={styles.Column}>
+                        <section>
+                            <FullPost id={this.state.selectedPostId} />
+                        </section>
+                    </div>
+                </div>
                 <section>
-                    <FullPost id={this.state.selectedPostId} />
-                </section>
-                <section>
-                    <NewPost />
+                    <NewPost open={this.state.postFormOpen} 
+                        closed={this.postFormClose} />
                 </section>
             </div>
         );

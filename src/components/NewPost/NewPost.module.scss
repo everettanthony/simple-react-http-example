@@ -1,0 +1,75 @@
+.NewPost {
+    background: #6b1960;
+    color: #fff;
+    left: 0;
+    margin: 0;
+    padding: 30px;
+    position: absolute;
+    top: 0;
+    transition: transform 200ms ease-in-out;
+  //  transform: translateX(-662px);
+    width: 600px;
+    z-index: 999;
+
+    &.Open {
+        transform: translateX(0);
+    }
+    
+    &.Close {
+        transform: translateX(-100%);
+    }
+}
+
+.NewPost label {
+    font-weight: bold;
+    display: block;
+    margin: 10px auto;
+}
+
+.NewPost input,
+.NewPost textarea,
+.NewPost select {
+    border: 1px solid black;
+    box-sizing: border-box;
+    display: block;
+    font: inherit;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+
+}
+
+.NewPost button {
+    background-color: #f7218c;
+    border: 1px solid #f7218c;
+    color: #fff;
+    cursor: pointer;
+    float: right;
+    font: inherit;
+    margin: 5px 0;
+    padding: 10px 15px;
+}
+
+.NewPost button:hover,
+.NewPost button:active {
+    background-color: #f150a1;
+}
+
+.NewPostTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.PostFormRow:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.iconClose {
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.5rem;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+}

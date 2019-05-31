@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import styles from './FullPost.module.scss';
 // import axios from 'axios';
 import axios from '../../axios';
-import './FullPost.css';
 
 class FullPost extends Component {
     state = {
@@ -28,15 +28,15 @@ class FullPost extends Component {
     }
 
     render () {
-        let post = this.props.id ? <p className="Message">Loading...</p> : <p className="Message">Please select a Post!</p>;
+        let post = this.props.id ? <p className={styles.Message}>Loading...</p> : <p className={styles.Message}>Please select a Post!</p>;
 
         if (this.state.loadedPost) {
             post = (
-                <div className="FullPost">
-                    <h1 className="Title">{this.state.loadedPost.title}</h1>
-                    <p className="Body">{this.state.loadedPost.body}</p>
-                    <div className="Edit">
-                        <button className="Delete" onClick={this.deleteBlog}>Delete</button>
+                <div className={styles.FullPost}>
+                    <h1 className={styles.Title}>{this.state.loadedPost.title}</h1>
+                    <p className={styles.Body}>{this.state.loadedPost.body}</p>
+                    <div className={styles.Edit}>
+                        <button className={[styles.Button, styles.Delete].join(' ')} onClick={this.deleteBlog}>Delete</button>
                     </div>
                 </div>
             );
